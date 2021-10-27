@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>CS340</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./authors.html">Authors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./bookauthors.html">BookAuthors</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="./books.html">Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./members.html">Members</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./ratings.html">Ratings</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="card container-fluid mt-4" style="width: 80%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      <div class="card-body">
+        <h2>Manage Books</h2>
+      </div>
+    </div>
+
+    <div class="card container-fluid mt-2" style="width: 80%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      <div class="card-body">
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Book ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Publisher Name</th>
+              <th scope="col">Times Borrowed</th>
+              <th scope="col">Borrower</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No data</td>
+              <td>No data</td>
+              <td>No data</td>
+              <td>No data</td>
+              <td>No data</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card container-fluid mt-2" style="width: 80%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      <div class="card-header">Add a Book</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="titleInput">Title</label>
+            <input type="text" class="form-control" id="titleInput">
+          </div>
+          <div class="form-group">
+            <label for="publisherNameInput">Publisher Name</label>
+            <input type="text" class="form-control" id="publisherNameInput">
+          </div>
+          <div class="form-group">
+            <label for="timesBorrowedInput">Times Borrowed</label>
+            <input type="text" class="form-control" id="timesBorrowedInput">
+          </div>
+          <div class="form-group">
+            <label for="memberIdInput">Borrower (Member ID)</label>
+            <input type="text" class="form-control" id="memberIdInput">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
