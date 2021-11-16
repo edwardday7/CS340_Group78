@@ -15,22 +15,22 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="./index.html">Home</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./authors.html">Authors</a>
+            <a class="nav-link" href="authors">Authors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./bookauthors.html">BookAuthors</a>
+            <a class="nav-link" href="bookauthors">BookAuthors</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="./books.html">Books</a>
+            <a class="nav-link" href="books">Books</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./members.html">Members</a>
+            <a class="nav-link" href="members">Members</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./ratings.html">Ratings</a>
+            <a class="nav-link" href="ratings">Ratings</a>
           </li>
         </ul>
       </div>
@@ -55,13 +55,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>No data</td>
-              <td>No data</td>
-              <td>No data</td>
-              <td>No data</td>
-              <td>No data</td>
-            </tr>
+            {% for book in books %}
+              <tr>
+                <td>{{book["bookID"]}}</td>
+                <td>{{book["title"]}}</td>
+                <td>{{book["publisherName"]}}</td>
+                <td>{{book["amountOfTimesBorrowed"]}}</td>
+                <td>{{book["borrower"]}}</td>
+              </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
@@ -71,22 +73,27 @@
       <div class="card container-fluid mt-2" style="width: 80%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
         <div class="card-header">Add a Book</div>
         <div class="card-body">
-          <form>
+          <form action="/books" method="post">
             <div class="form-group">
               <label for="titleInput">Title</label>
-              <input type="text" class="form-control" id="titleInput">
+              <input type="text" class="form-control" name="titleInput" id="titleInput">
             </div>
             <div class="form-group">
               <label for="publisherNameInput">Publisher Name</label>
-              <input type="text" class="form-control" id="publisherNameInput">
+              <input type="text" class="form-control" name="publisherNameInput" id="publisherNameInput">
             </div>
             <div class="form-group">
               <label for="timesBorrowedInput">Times Borrowed</label>
-              <input type="text" class="form-control" id="timesBorrowedInput">
+              <input type="text" class="form-control" name="timesBorrowedInput" id="timesBorrowedInput">
             </div>
             <div class="form-group">
-              <label for="memberIdInput">Borrower (Member ID)</label>
-              <input type="text" class="form-control" id="memberIdInput">
+              <label for="memberIdInput">Borrower (Member ID) - Optional</label>
+              <br>
+              <select name="memberIdInput" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                {% for member in members %}
+                  <option value='{{member["memberID"]}}'>{{member["memberID"]}} - {{member["firstName"]}},{{member["lastName"]}}</option>
+                {% endfor %}
+              </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
