@@ -5,7 +5,6 @@ import database.db_connector as db
 # Configuration
 
 app = Flask(__name__)
-db_connection = db.connect_to_database()
 
 # Routes
 
@@ -15,6 +14,8 @@ def index():
 
 @app.route('/authors', methods=["GET", "POST"])
 def authors():
+
+    db_connection = db.connect_to_database()
 
     if request.method == "POST":
         insert_query = "INSERT INTO Authors (firstName, lastName) VALUES (%s, %s);"
@@ -31,6 +32,8 @@ def authors():
 
 @app.route('/bookauthors', methods=["GET", "POST"])
 def bookauthors():
+
+    db_connection = db.connect_to_database()
 
     if request.method == "POST":
         insert_query = "INSERT INTO BookAuthors (bookID, authorID) VALUES (%s, %s);"
@@ -56,6 +59,8 @@ def bookauthors():
 @app.route('/books', methods=["GET", "POST"])
 def books():
 
+    db_connection = db.connect_to_database()
+
     if request.method == "POST":
         insert_query = "INSERT INTO Books (title, publisherName, amountOfTimesBorrowed, borrower) VALUES (%s, %s, %s, %s);"
         cursor = db.execute_query(
@@ -79,6 +84,8 @@ def books():
 @app.route('/members', methods=["GET", "POST"])
 def members():
 
+    db_connection = db.connect_to_database()
+
     if request.method == "POST":
         insert_query = "INSERT INTO Members (firstName, lastName) VALUES (%s, %s);"
         cursor = db.execute_query(
@@ -94,6 +101,8 @@ def members():
 
 @app.route('/ratings', methods=["GET", "POST"])
 def ratings():
+
+    db_connection = db.connect_to_database()
 
     if request.method == "POST":
         insert_query = "INSERT INTO Ratings (comment, starRating, bookID, memberID) VALUES (%s, %s, %s, %s);"
