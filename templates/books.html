@@ -73,29 +73,39 @@
       <div class="card container-fluid mt-2" style="width: 80%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
         <div class="card-header">Add a Book</div>
         <div class="card-body">
-          <form action="/books" method="post">
+          <form id="createBookForm" action="/books" method="post">
             <div class="form-group">
               <label for="titleInput">Title</label>
               <input type="text" class="form-control" name="titleInput" id="titleInput">
+              <div id="invalidTitle" class="invalid-feedback">
+                Please enter a title
+              </div>
             </div>
             <div class="form-group">
               <label for="publisherNameInput">Publisher Name</label>
               <input type="text" class="form-control" name="publisherNameInput" id="publisherNameInput">
+              <div id="invalidPublisherName" class="invalid-feedback">
+                Please enter a publisher name
+              </div>
             </div>
             <div class="form-group">
               <label for="timesBorrowedInput">Times Borrowed</label>
               <input type="text" class="form-control" name="timesBorrowedInput" id="timesBorrowedInput">
+              <div id="invalidTimesBorrowed" class="invalid-feedback">
+                Number of times borrowered is required and must be a number
+              </div>
             </div>
             <div class="form-group">
               <label for="memberIdInput">Borrower (Member ID) - Optional</label>
               <br>
-              <select name="memberIdInput" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+              <select name="memberIdInput" class="form-control">
+                <option value='-1'>None</option>
                 {% for member in members %}
                   <option value='{{member["memberID"]}}'>{{member["memberID"]}} - {{member["firstName"]}},{{member["lastName"]}}</option>
                 {% endfor %}
               </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="btnSubmit" type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
@@ -103,10 +113,16 @@
       <div class="card container-fluid mt-2" style="width: 80%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
         <div class="card-header">Delete a Book</div>
         <div class="card-body">
-          <form>
+          <form action="/books" method="post">
             <div class="form-group">
+              <input type="hidden" name="delete" value="delete">
               <label for="bookIdInput">Book ID</label>
-              <input type="text" class="form-control" id="bookIdInput">
+              <br>
+              <select name="bookIdInput" class="form-control">
+                {% for book in books %}
+                  <option value='{{book["bookID"]}}'>{{book["bookID"]}} - {{book["title"]}}</option>
+                {% endfor %}
+              </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
@@ -119,5 +135,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Custom script for validation-->
+    <script src="../static/books.js" type="text/javascript"></script>
   </body>
 </html>

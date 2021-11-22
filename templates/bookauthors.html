@@ -70,7 +70,7 @@
           <div class="form-group">
             <label for="bookIdInput">Book ID</label>
             <br>
-            <select name="bookIdInput" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <select name="bookIdInput" class="form-control">
               {% for book in books %}
                 <option value='{{book["bookID"]}}'>{{book["bookID"]}} - {{book["title"]}}</option>
               {% endfor %}
@@ -79,7 +79,7 @@
           <div class="form-group">
             <label for="authorIdInput">Author ID</label>
             <br>
-            <select name="authorIdInput" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <select name="authorIdInput" class="form-control">
               {% for author in authors %}
                 <option value='{{author["authorID"]}}'>{{author["authorID"]}} - {{author["firstName"]}},{{author["lastName"]}}</option>
               {% endfor %}

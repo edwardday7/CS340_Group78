@@ -73,19 +73,22 @@
       <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
         <div class="card-header">Create a Rating</div>
         <div class="card-body">
-          <form action="/ratings" method="post">
+          <form id="createRatingForm" action="/ratings" method="post">
             <div class="form-group">
               <label for="starInput">Number of Stars (1-5)</label>
               <input type="text" class="form-control" name="starInput" id="starInput">
+              <div id="invalidStars" class="invalid-feedback">
+                Number of stars is required and must be a number between 1 and 5
+              </div>
             </div>
             <div class="form-group">
-              <label for="commentInput">Comment</label>
+              <label for="commentInput">Comment (Optional)</label>
               <input type="text" class="form-control" name="commentInput" id="commentInput">
             </div>
             <div class="form-group">
               <label for="bookIdInput">Book ID</label>
               <br>
-              <select name="bookIdInput" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+              <select name="bookIdInput" class="form-control">
                 {% for book in books %}
                   <option value='{{book["bookID"]}}'>{{book["bookID"]}} - {{book["title"]}}</option>
                 {% endfor %}
@@ -94,13 +97,13 @@
             <div class="form-group">
               <label for="memberIdInput">Member ID</label>
               <br>
-              <select name="memberIdInput" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+              <select name="memberIdInput" class="form-control">
                 {% for member in members %}
                   <option value='{{member["memberID"]}}'>{{member["memberID"]}} - {{member["firstName"]}},{{member["lastName"]}}</option>
                 {% endfor %}
               </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="btnCreate" type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
@@ -112,7 +115,7 @@
             <div class="form-group">
               <label for="bookIdInput">Book ID</label>
               <br>
-              <select name="bookIdInput" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+              <select name="bookIdInput" class="form-control">
                 <option value=''>All</option>
                 {% for book in books %}
                   <option value='{{book["bookID"]}}'>{{book["bookID"]}} - {{book["title"]}}</option>
@@ -127,28 +130,47 @@
       <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
         <div class="card-header">Update a Rating</div>
         <div class="card-body">
-          <form>
+          <form id="updateRatingForm" action="/ratings" method="post">
             <div class="form-group">
+              <input type="hidden" name="update" value="update">
               <label for="ratingIdInput">Rating ID</label>
-              <input type="text" class="form-control" id="ratingIdInput">
+              <br>
+              <select name="ratingIdInput" class="form-control">
+                {% for rating in ratings %}
+                  <option value='{{rating["ratingID"]}}'>{{rating["ratingID"]}}</option>
+                {% endfor %}
+              </select>
             </div>
             <div class="form-group">
-              <label for="starInput">Number of Stars</label>
-              <input type="text" class="form-control" id="starInput">
+              <label for="starInput">Number of Stars (1-5)</label>
+              <input type="text" class="form-control" id="starInput" name="starInput">
+              <div id="invalidStars" class="invalid-feedback">
+                Number of stars is required and must be a number between 1 and 5
+              </div>
             </div>
             <div class="form-group">
-              <label for="commentInput">Comment</label>
-              <input type="text" class="form-control" id="commentInput">
+              <label for="commentInput">Comment (Optional)</label>
+              <input type="text" class="form-control" id="commentInput" name="commentInput">
             </div>
             <div class="form-group">
               <label for="bookIdInput">Book ID</label>
-              <input type="text" class="form-control" id="bookIdInput">
+              <br>
+              <select name="bookIdInput" class="form-control">
+                {% for book in books %}
+                  <option value='{{book["bookID"]}}'>{{book["bookID"]}} - {{book["title"]}}</option>
+                {% endfor %}
+              </select>
             </div>
             <div class="form-group">
               <label for="memberIdInput">Member ID</label>
-              <input type="text" class="form-control" id="memberIdInput">
+              <br>
+              <select name="memberIdInput" class="form-control">
+                {% for member in members %}
+                  <option value='{{member["memberID"]}}'>{{member["memberID"]}} - {{member["firstName"]}},{{member["lastName"]}}</option>
+                {% endfor %}
+              </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="btnUpdate" type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
@@ -159,5 +181,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+    <!-- Custom script for validation-->
+    <script src="../static/ratings.js" type="text/javascript"></script>
   </body>
 </html>
